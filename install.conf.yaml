@@ -1,0 +1,16 @@
+- defaults:
+    link:
+        create: true
+        relink: true
+    shell:
+        stderr: true
+
+- clean: ['~', '~/.oh-my-zsh/custom/', '~/.oh-my-zsh/custom/plugins/']
+
+- link:
+    ~/.vimrc: vimrc
+    ~/.gitignore_global: gitignore_global
+    ~/.zshrc: zshrc
+
+- shell:
+    - [sh pre-install.sh, Running pre installation script]
