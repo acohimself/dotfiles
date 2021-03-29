@@ -12,8 +12,10 @@ fi
 
 
 # Install vim-plug
-if [! -f "$HOME/.vim/autoload/plug.vim" ]; then
+if [ ! -f "$HOME/.vim/autoload/plug.vim" ]; then
 	echo 'Installing vim-plug'
 	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 		    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	echo 'Installing plugins'
+	vim -es -u vimrc -i NONE -c "PlugInstall" -c "qa"
 fi
