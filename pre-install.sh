@@ -4,7 +4,7 @@
 OMZDIR="$HOME/.oh-my-zsh"
 if [ ! -d "$OMZDIR" ]; then
       echo 'Installing oh-my-zsh'
-        /bin/sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+        /bin/sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     else
 	echo 'Updating oh-my-zsh'
 	$OMZDIR/tools/upgrade.sh
