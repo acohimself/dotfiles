@@ -33,7 +33,7 @@ Plug 'itchyny/lightline.vim'
   if !has('gui_running')
 	  set t_Co=256
   endif
-
+  set noshowmode
 " Languages and file types.
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'chr4/nginx.vim'
@@ -109,7 +109,6 @@ set mouse=a
 set ruler
 
 set showmatch
-set showmode
 set wildmenu			" Tab autocomplete in command mode 
 set wildmode=full
 set wrap
