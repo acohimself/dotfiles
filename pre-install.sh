@@ -1,8 +1,15 @@
 #!/bin/bash
 
+
+# Check if fzf is installed
+FZFDIR="$HOME/.fzf"
+if [ ! -d "$FZFDIR" ]; then
+	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+	~/.fzf/install
+fi
+
 # Check if oh-my-zsh is installed
 OMZDIR="$HOME/.oh-my-zsh"
-echo $OMZDIR
 if [ ! -d "$OMZDIR" ]; then
       echo 'Installing oh-my-zsh'
       /bin/sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
