@@ -1,6 +1,19 @@
-" Specify a directory for plugins.
+" Leader Mappings
+let mapleader=" "
+let maplocalleader=" "
+
+
+" Specify a directory for plugins. 
 call plug#begin('~/.vim/plugged')
 
+" fzf
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+  " Recently edited files
+  map <Leader>h :History<CR>
+  " search files
+  map <Leader>o :Files<CR>
+  
 
 " Gruvbox Community theme.
 Plug 'gruvbox-community/gruvbox'
@@ -13,6 +26,13 @@ Plug 'lambdalisue/fern-renderer-nerdfont.vim'
 
 " Toggle comments in various ways.
 Plug 'tpope/vim-commentary'
+
+" A light and configurable statusline/tabline plugin for Vim
+Plug 'itchyny/lightline.vim'
+  set laststatus=2
+  if !has('gui_running')
+	  set t_Co=256
+  endif
 
 " Languages and file types.
 Plug 'cakebaker/scss-syntax.vim'
@@ -63,12 +83,7 @@ syntax on
 colorscheme gruvbox
 set background=dark
 
-" Leader Mappings
-let mapleader=" "
-let maplocalleader=" "
 
-" Recently edited files
-"map <Leader>h :History<CR>
 
 set autoread                          " Auto reload changed files  
 set clipboard=unnamedplus	      " Clipboard support (OSX)
@@ -104,26 +119,6 @@ set undodir=~/.vim/undo/
 set undofile                                                                    
 set undolevels=1000                                                             
 set undoreload=10000 
-" -----------------------------------------------------------------------------
-" Status line
-" -----------------------------------------------------------------------------
-
-" Heavily inspired by: https://github.com/junegunn/dotfiles/blob/master/vimrc
-function! s:statusline_expr()
-  let mod = "%{&modified ? '[+] ' : !&modifiable ? '[x] ' : ''}"
-  let ro  = "%{&readonly ? '[RO] ' : ''}"
-  let ft  = "%{len(&filetype) ? '['.&filetype.'] ' : ''}"
-  let fug = "%{exists('g:loaded_fugitive') ? fugitive#statusline() : ''}"
-  let sep = ' %= '
-  let pos = ' %-12(%l : %c%V%) '
-  let pct = ' %P'
-
-  return '[%n] %f %<'.mod.ro.ft.fug.sep.pos.'%*'.pct
-endfunction
-
-let &statusline = s:statusline_expr()
-
-
 
 
 
@@ -168,19 +163,19 @@ let g:loaded_netrwFileHandlers = 1
 
 let g:fern#renderer = "nerdfont"
 
-augroup my-fern-hijack
-  autocmd!
-  autocmd BufEnter * ++nested call s:hijack_directory()
-augroup END
+" augroup my-fern-hijack
+"   autocmd!
+"   autocmd BufEnter * ++nested call s:hijack_directory()
+" augroup END
 
-function! s:hijack_directory() abort
-  let path = expand('%:p')
-  if !isdirectory(path)
-    return
-  endif
-  bwipeout %
-  execute printf('Fern %s', fnameescape(path))
-endfunction
+" function! s:hijack_directory() abort
+"   let path = expand('%:p')
+"   if !isdirectory(path)
+"     return
+"   endif
+"   bwipeout %
+"   execute printf('Fern %s', fnameescape(path))
+" endfunction
 
 " Custom settings and mappings.
 let g:fern#disable_default_mappings = 1

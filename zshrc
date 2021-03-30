@@ -37,7 +37,7 @@ ZSH_THEME="bullet-train"
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
-
+export TERM=xterm-256color
 # Uncomment the following line to disable auto-setting terminal title.
 # DISABLE_AUTO_TITLE="true"
 
