@@ -91,6 +91,11 @@ set nowrap                            " Don't wrap long lines
 set noerrorbells novisualbell         " Turn off visual and audible bells
 set autoindent
 set backspace=indent,eol,start
+
+" Set the directory of the swap file
+" The // indicates that the swap name should be globally unique
+set directory=~/.vim/tmp//,/tmp
+
 " set colorcolumn=80
 "-------------------------------------------------------------------------------
 " Interface                                                                     
