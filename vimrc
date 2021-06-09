@@ -2,7 +2,6 @@
 let mapleader=" "
 let maplocalleader=" "
 
-
 " Specify a directory for plugins. 
 call plug#begin('~/.vim/plugged')
 
@@ -34,7 +33,11 @@ Plug 'itchyny/lightline.vim'
 	  set t_Co=256
   endif
   set noshowmode
-" Languages and file types.
+
+" Automatically show Vim's complete menu while typing.
+Plug 'vim-scripts/AutoComplPop'
+  
+  " Languages and file types.
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'chr4/nginx.vim'
 Plug 'chrisbra/csv.vim'
