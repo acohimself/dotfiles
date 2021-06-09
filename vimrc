@@ -86,7 +86,7 @@ set background=dark
 
 
 set autoread                          " Auto reload changed files  
-set clipboard=unnamed                 " Clipboard support (OSX)
+set clipboard^=unnamed,unnamedplus
 set nowrap                            " Don't wrap long lines  
 set noerrorbells novisualbell         " Turn off visual and audible bells
 set autoindent
