@@ -5,6 +5,11 @@ let maplocalleader=" "
 " Specify a directory for plugins. 
 call plug#begin('~/.vim/plugged')
 
+" Close and change between buffers
+Plug 'moll/vim-bbye'
+  nnoremap <Leader>w :Bdelete<CR>
+  nnoremap <Leader>n :bnext<CR>
+  nnoremap <Leader>b :Buffers<CR>
 " fzf
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -12,7 +17,8 @@ Plug 'junegunn/fzf.vim'
   map <Leader>h :History<CR>
   " search files
   map <Leader>o :Files<CR>
-  
+  map <C-o> :GFiles<CR> 
+  map <C-f> :Rg! 
 
 " Gruvbox Community theme.
 Plug 'gruvbox-community/gruvbox'
@@ -36,7 +42,7 @@ Plug 'itchyny/lightline.vim'
 
 " Automatically show Vim's complete menu while typing.
 Plug 'vim-scripts/AutoComplPop'
-  
+ 
   " Languages and file types.
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'chr4/nginx.vim'
@@ -57,7 +63,6 @@ Plug 'vim-python/python-syntax'
 Plug 'wgwoods/vim-systemd-syntax'
 " Git
 Plug 'tpope/vim-fugitive'
-  nmap     <Leader>g :Gstatus<CR>gg<c-n>
   nnoremap <Leader>d :Gdiff<CR>
 
  
@@ -127,7 +132,7 @@ set undofile
 set undolevels=1000                                                             
 set undoreload=10000 
 
-
+nnoremap <Leader>vimrc :e $MYVIMRC<CR>
 
 " Navigate around splits with a single key combo.
 nnoremap <C-l> <C-w><C-l>
@@ -150,6 +155,7 @@ autocmd BufNewFile,BufRead .*aliases set ft=sh
 
 " Ensure tabs don't get converted to spaces in Makefiles.
 autocmd FileType make setlocal noexpandtab
+
 
 " Only show the cursor line in the active buffer.
 augroup CursorLine
