@@ -55,6 +55,8 @@ Plug 'tpope/vim-git'
 Plug 'tpope/vim-liquid'
 Plug 'vim-python/python-syntax'
 Plug 'wgwoods/vim-systemd-syntax'
+Plug 'lervag/vimtex'
+
 " Git
 Plug 'tpope/vim-fugitive'
   nmap     <Leader>g :Gstatus<CR>gg<c-n>
