@@ -8,11 +8,11 @@
 
 - clean: ['~', '~/.oh-my-zsh/custom/', '~/.oh-my-zsh/custom/plugins/']
 
+- shell:
+    - [sh pre-install.sh, Running pre installation script]
 - link:
     ~/.vimrc: vimrc
     ~/.vim: vim
     ~/.gitignore_global: gitignore_global
     ~/.zshrc: zshrc
     ~/.oh-my-zsh/custom/themes/bullet-train.zsh-theme: oh-my-zsh/themes/bullet-train.zsh-theme
-- shell:
-    - [sh pre-install.sh, Running pre installation script]

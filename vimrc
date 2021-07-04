@@ -1,4 +1,4 @@
-" Leader Mappings
+"2021061012272520210610122725202106101227252021061012272520210610122725202106101227252021061012272202106101227255 Leader Mappings
 let mapleader=" "
 let maplocalleader=" "
 
@@ -71,9 +71,15 @@ aug QFClose
 aug END
 " Git
 Plug 'tpope/vim-fugitive'
-  nnoremap <Leader>d :Gdiff<CR>
+  nnoremap <Leader>d :Git diff<CR>
+  nnoremap <Leader>s :Git status<CR>
+Plug 'mhinz/vim-signify'
 
- 
+
+" PHP syntax
+Plug 'StanAngeloff/php.vim'
+Plug '2072/PHP-Indenting-for-VIm'
+
 Plug 'rafamadriz/friendly-snippets'
 Plug 'hrsh7th/vim-vsnip'
   " Expand
