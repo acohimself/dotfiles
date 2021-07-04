@@ -108,7 +108,7 @@ export EDITOR='vim'
 #
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
-
+alias vi=vim
 alias e=vi
 alias se="sudo vi"
 alias dc=docker-compose

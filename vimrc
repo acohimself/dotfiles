@@ -23,6 +23,9 @@ Plug 'junegunn/fzf.vim'
 " Gruvbox Community theme.
 Plug 'gruvbox-community/gruvbox'
 
+" Highlight current word
+Plug 'osyo-manga/vim-brightest'
+
 " Navigate and manipulate files in a tree view.
 Plug 'lambdalisue/fern.vim'
 Plug 'lambdalisue/fern-mapping-mark-children.vim'
@@ -62,7 +65,10 @@ Plug 'tpope/vim-liquid'
 Plug 'vim-python/python-syntax'
 Plug 'wgwoods/vim-systemd-syntax'
 Plug 'lervag/vimtex'
-
+aug QFClose
+    au!
+    au WinEnter * if winnr('$') == 1 && &buftype == "quickfix"|q|endif
+aug END
 " Git
 Plug 'tpope/vim-fugitive'
   nnoremap <Leader>d :Gdiff<CR>
@@ -100,6 +106,9 @@ set clipboard^=unnamed,unnamedplus
 set nowrap                            " Don't wrap long lines  
 set noerrorbells novisualbell         " Turn off visual and audible bells
 set autoindent
+set tabstop=4
+set shiftwidth=4
+set expandtab
 set backspace=indent,eol,start
 
 " Set the directory of the swap file
@@ -134,6 +143,9 @@ set undofile
 set undolevels=1000                                                             
 set undoreload=10000 
 
+nmap <c-s> :w<cr>
+imap <c-s> <esc>:w<cr>a
+
 nnoremap <Leader>vimrc :e $MYVIMRC<CR>
 
 " Navigate around splits with a single key combo.
@@ -158,6 +170,7 @@ autocmd BufNewFile,BufRead .*aliases set ft=sh
 " Ensure tabs don't get converted to spaces in Makefiles.
 autocmd FileType make setlocal noexpandtab
 
+autocmd BufNewFile,BufRead *.cls set ft=tex
 
 " Only show the cursor line in the active buffer.
 augroup CursorLine
@@ -225,5 +238,4 @@ augroup FernGroup
   autocmd!
   autocmd FileType fern call FernInit()
 augroup END
-
 
