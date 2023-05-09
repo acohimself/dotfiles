@@ -16,3 +16,4 @@
     ~/.gitignore_global: gitignore_global
     ~/.zshrc: zshrc
     ~/.oh-my-zsh/custom/themes/bullet-train.zsh-theme: oh-my-zsh/themes/bullet-train.zsh-theme
+    ~/.config/nvim: config/nvim

@@ -1,0 +1,1 @@
+au BufRead,BufNewFile known_hosts setfiletype sshknownhosts

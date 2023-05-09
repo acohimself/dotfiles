@@ -5,6 +5,8 @@ let maplocalleader=" "
 " Specify a directory for plugins. 
 call plug#begin('~/.vim/plugged')
 
+Plug 'neovimhaskell/haskell-vim'
+Plug 'tmhedberg/SimpylFold'
 " Close and change between buffers
 Plug 'moll/vim-bbye'
   nnoremap <Leader>w :Bdelete<CR>
@@ -63,6 +65,7 @@ Plug 'stephpy/vim-yaml'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-liquid'
 Plug 'vim-python/python-syntax'
+    let g:python_highlight_all = 1
 Plug 'wgwoods/vim-systemd-syntax'
 Plug 'lervag/vimtex'
 aug QFClose
@@ -79,6 +82,12 @@ Plug 'mhinz/vim-signify'
 " PHP syntax
 Plug 'StanAngeloff/php.vim'
 Plug '2072/PHP-Indenting-for-VIm'
+
+" python
+Plug 'vim-scripts/indentpython.vim'
+Plug 'nvie/vim-flake8'
+let g:flake8_cmd="python3 -m flake8"
+filetype plugin indent on
 
 Plug 'rafamadriz/friendly-snippets'
 Plug 'hrsh7th/vim-vsnip'

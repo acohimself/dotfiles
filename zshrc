@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$HOME/Library/Python/3.8/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -108,11 +108,13 @@ export EDITOR='vim'
 #
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
-alias vi=vim
-alias e=vi
-alias se="sudo vi"
+alias vi=nvim
 alias dc=docker-compose
 alias acohimself="ssh -i  ~/keys/main.pem ec2-user@acohimself.com"
 alias vimrc="vi ~/.vimrc"
+alias domce="ssh root@domce.dk"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f "/Users/aco/.ghcup/env" ] && source "/Users/aco/.ghcup/env" # ghcup-env
+
+source /Users/aco/.docker/init-zsh.sh || true # Added by Docker Desktop
