@@ -98,6 +98,11 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
+# Docker platform for Apple Silicon chips
+if [[ $(uname -p) == 'arm64' ]]; then
+  export DOCKER_DEFAULT_PLATFORM=linux/amd64
+fi
+
 # Preferred editor for local and remote sessions
 export EDITOR='vim'
 
@@ -117,4 +122,3 @@ alias domce="ssh root@domce.dk"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f "/Users/aco/.ghcup/env" ] && source "/Users/aco/.ghcup/env" # ghcup-env
 
-source /Users/aco/.docker/init-zsh.sh || true # Added by Docker Desktop
