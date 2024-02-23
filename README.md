@@ -1,0 +1,6 @@
+# Dotfiles
+
+
+### Requirements
+* stow
+* make
