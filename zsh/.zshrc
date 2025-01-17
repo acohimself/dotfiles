@@ -115,7 +115,8 @@ export EDITOR='nvim'
 alias vi=nvim
 alias dc=docker-compose
 
-alias domce="ssh root@domce.dk"
+alias domce="ssh root@10.64.129.2"
+alias get-dev-ip='aws ec2 describe-instances --output=text --region=eu-central-1 --filters Name="tag:Name",Values="ECS - dev" --query "Reservations[*].Instances[*].PublicIpAddress"'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f "/Users/aco/.ghcup/env" ] && source "/Users/aco/.ghcup/env" # ghcup-env
