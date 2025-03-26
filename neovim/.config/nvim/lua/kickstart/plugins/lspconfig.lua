@@ -134,6 +134,7 @@ return {
       --  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
+      local lsp_path = vim.fn.expand("~/.local/lsp_servers/lua-language-server/bin/lua-language-server")
       local servers = {
         -- clangd = {},
         -- gopls = {},
@@ -152,14 +153,18 @@ return {
         --
 
         lua_ls = {
-          -- cmd = {...},
+          cmd = {lsp_path},
           -- filetypes = { ...},
           -- capabilities = {},
           settings = {
             Lua = {
-              completion = {
-                callSnippet = 'Replace',
-              },
+                    runtime = { version = "LuaJIT" },
+              diagnostics = { globals = { "vim" } },
+              workspace = { library = vim.api.nvim_get_runtime_file("", true) },
+              telemetry = { enable = false },
+              -- completion = {
+              --   callSnippet = 'Replace',
+              -- },
               -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
               -- diagnostics = { disable = { 'missing-fields' } },
             },
