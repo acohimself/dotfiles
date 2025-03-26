@@ -22,13 +22,13 @@ return {
 				"vimdoc",
 			},
 			-- Autoinstall languages that are not installed
-			auto_install = true,
+			auto_install = false,
 			highlight = {
 				enable = true,
 				-- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
 				--  If you are experiencing weird indenting issues, add the language to
 				--  the list of additional_vim_regex_highlighting and disabled languages for indent.
-				additional_vim_regex_highlighting = { "ruby" },
+				additional_vim_regex_highlighting = { "ruby"},
 				disable = function(lang, bufnr) -- Disable in files more than 5k
 					return vim.api.nvim_buf_line_count(bufnr) > 5000
 				end,
