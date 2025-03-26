@@ -113,9 +113,9 @@ export EDITOR='nvim'
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 alias vi=nvim
-alias dc=docker-compose
+alias dc=docker compose
 
-alias domce="ssh root@10.64.129.2"
+alias domce="ssh root@domce.dk"
 alias get-dev-ip='aws ec2 describe-instances --output=text --region=eu-central-1 --filters Name="tag:Name",Values="ECS - dev" --query "Reservations[*].Instances[*].PublicIpAddress"'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
