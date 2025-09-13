@@ -97,24 +97,21 @@ export LSCOLORS="exgxfxdacxDaDaxbadacex"
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Docker platform for Apple Silicon chips
-if [[ $(uname -p) == 'arm' ]]; then
-  export DOCKER_DEFAULT_PLATFORM=linux/amd64
-fi
-
 # Preferred editor for local and remote sessions
 export EDITOR='nvim'
+export PATH=~/.npm-global/bin:$PATH
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 alias vi=nvim
-alias dc=docker compose
+alias dc="docker compose"
 
-alias domce="ssh root@domce.dk"
+alias domce="ssh root@ssh.domce.dk"
 alias get-dev-ip='aws ec2 describe-instances --output=text --region=eu-central-1 --filters Name="tag:Name",Values="ECS - dev" --query "Reservations[*].Instances[*].PublicIpAddress"'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f "/Users/aco/.ghcup/env" ] && source "/Users/aco/.ghcup/env" # ghcup-env
 
+eval "$(direnv hook zsh)"

@@ -163,7 +163,16 @@ return {
 				--"ruff-lsp" = {}, -- linter for python (includes flake8, pep8, etc.)
 				black = {}, -- formatter
 				isort = {}, -- organize imports
-				-- rust_analyzer = {},
+				rust_analyzer = {
+					settings = {
+						["rust-analyzer"] = {
+							checkOnSave = {
+								command = "clippy",
+							},
+						},
+					},
+				},
+				elmls = {},
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 				--
 				-- Some languages (like typescript) have entire language plugins that can be useful:
