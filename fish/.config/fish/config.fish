@@ -15,11 +15,19 @@ if status is-interactive
         curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish --create-dirs -o $__fish_config_dir/functions/fisher.fish
         source $__fish_config_dir/functions/fisher.fish
         fisher update
+        # Apply Tide configuration if available
+        if test -f $__fish_config_dir/tide_config.fish
+            source $__fish_config_dir/tide_config.fish
+        end
     # Update plugins if missing
     else if type -q fisher
         and test -f $__fish_config_dir/fish_plugins
         and not test -f $__fish_config_dir/functions/tide.fish
         fisher update
+        # Apply Tide configuration if available
+        if test -f $__fish_config_dir/tide_config.fish
+            source $__fish_config_dir/tide_config.fish
+        end
     end
 end
 
