@@ -7,6 +7,20 @@ if status is-interactive
     set fish_cursor_insert line
     set fish_cursor_replace_one underscore
     set fish_cursor_visual block
+
+    # Bootstrap Fisher on first run
+    if not test -f $__fish_config_dir/functions/fisher.fish
+        and test -f $__fish_config_dir/fish_plugins
+        echo "Setting up Fisher for the first time..."
+        curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish --create-dirs -o $__fish_config_dir/functions/fisher.fish
+        source $__fish_config_dir/functions/fisher.fish
+        fisher update
+    # Update plugins if missing
+    else if type -q fisher
+        and test -f $__fish_config_dir/fish_plugins
+        and not test -f $__fish_config_dir/functions/tide.fish
+        fisher update
+    end
 end
 
 # Environment variables
