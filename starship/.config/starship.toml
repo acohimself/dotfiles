@@ -1,4 +1,5 @@
 format = """
+$os\
 $username\
 $hostname\
 $directory\
@@ -15,6 +16,7 @@ $rust\
 $ruby\
 $elm\
 $package\
+$direnv\
 $aws\
 $jobs\
 $cmd_duration\
@@ -23,6 +25,13 @@ $character"""
 
 add_newline = true
 palette = 'nord'
+
+[os]
+disabled = false
+
+
+[os.symbols]
+Macos = ' '
 
 [username]
 style_user = 'yellow bold'
@@ -106,6 +115,11 @@ format = '[$symbol($version )]($style)'
 
 [package]
 symbol = '󰏗 '
+display_private = true
+disabled = false
+
+[direnv]
+disabled = false
 
 [aws]
 symbol = ' '
