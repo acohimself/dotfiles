@@ -8,30 +8,11 @@ if status is-interactive
     set fish_cursor_replace_one underscore
     set fish_cursor_visual block
 
-    # Bootstrap Fisher on first run
-    if not test -f $__fish_config_dir/functions/fisher.fish
-        echo "Installing Fisher for the first time..."
-        # Skip Tide configuration wizard
-        set -U _tide_configure_on_startup false
-        # Install Fisher
-        curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source
-        and fisher install jorgebucaran/fisher
-        # Install plugins
-        and fisher update
-        # Configure Tide with saved settings
-        if test -f $__fish_config_dir/tide_setup.fish
-            source $__fish_config_dir/tide_setup.fish
-        end
-    # Update plugins if missing
-    else if functions -q fisher
-        and test -f $__fish_config_dir/fish_plugins
-        and not test -f $__fish_config_dir/functions/tide.fish
-        set -U _tide_configure_on_startup false
-        fisher update
-        # Configure Tide if setup file exists
-        if test -f $__fish_config_dir/tide_setup.fish
-            source $__fish_config_dir/tide_setup.fish
-        end
+    # Initialize Starship prompt if available
+    if type -q starship
+        starship init fish | source
+    else
+        echo "Starship not installed. Install with: curl -sS https://starship.rs/install.sh | sh" >&2
     end
 end
 
