@@ -28,6 +28,19 @@ return {
     local dap = require 'dap'
     local dapui = require 'dapui'
 
+    -- Build debugger list based on available languages
+    local ensure_installed = {}
+
+    -- Add Go debugger only if Go is available
+    if vim.fn.executable("go") == 1 then
+      table.insert(ensure_installed, 'delve')
+    end
+
+    -- Add Rust debugger only if Rust is available
+    if vim.fn.executable("rustc") == 1 then
+      table.insert(ensure_installed, 'codelldb')
+    end
+
     require('mason-nvim-dap').setup {
       -- Makes a best effort to setup the various debuggers with
       -- reasonable debug configurations
@@ -39,11 +52,7 @@ return {
 
       -- You'll need to check that you have the required things installed
       -- online, please don't ask me how to install them :)
-      ensure_installed = {
-        -- Update this to ensure that you have the debuggers for the langs you want
-        'delve',
-        'codelldb', -- Rust debugger
-      },
+      ensure_installed = ensure_installed,
     }
 
     -- Basic debugging keymaps, feel free to change to your liking!
@@ -85,7 +94,9 @@ return {
     dap.listeners.before.event_terminated['dapui_config'] = dapui.close
     dap.listeners.before.event_exited['dapui_config'] = dapui.close
 
-    -- Install golang specific config
-    require('dap-go').setup()
+    -- Install golang specific config only if Go is available
+    if vim.fn.executable("go") == 1 then
+      require('dap-go').setup()
+    end
   end,
 }

@@ -159,10 +159,6 @@ return {
 			local servers = {
 				-- clangd = {},
 				-- gopls = {},
-				pyright = {},
-				--"ruff-lsp" = {}, -- linter for python (includes flake8, pep8, etc.)
-				black = {}, -- formatter
-				isort = {}, -- organize imports
 				rust_analyzer = {
 					settings = {
 						["rust-analyzer"] = {
@@ -172,7 +168,6 @@ return {
 						},
 					},
 				},
-				elmls = {},
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 				--
 				-- Some languages (like typescript) have entire language plugins that can be useful:
@@ -188,6 +183,22 @@ return {
 				-- },
 			}
 
+			-- Add Python tools only if Python is available
+			if vim.fn.executable("python3") == 1 or vim.fn.executable("python") == 1 then
+				servers.pyright = {}
+				--servers["ruff-lsp"] = {} -- linter for python (includes flake8, pep8, etc.)
+			end
+
+			-- Add Elm language server only if Elm is available
+			if vim.fn.executable("elm") == 1 then
+				servers.elmls = {}
+			end
+
+			-- Add PHP language server only if PHP is available
+			if vim.fn.executable("php") == 1 then
+				servers.intelephense = {}
+			end
+
 			-- Ensure the servers and tools above are installed
 			--  To check the current status of installed tools and/or manually install
 			--  other tools, you can run
@@ -199,10 +210,14 @@ return {
 			-- You can add other tools here that you want Mason to install
 			-- for you, so that they are available from within Neovim.
 			local ensure_installed = vim.tbl_keys(servers or {})
-			vim.list_extend(ensure_installed, {
-				"stylua", -- Used to format Lua code
-			})
-			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
+			-- Only add stylua if we want Lua formatting (stylua is a standalone binary)
+			-- Remove this condition if you always want Lua formatting available
+			if vim.fn.executable("lua") == 1 or servers.lua_ls then
+				vim.list_extend(ensure_installed, {
+					"stylua", -- Used to format Lua code
+				})
+			end
+			-- Let mason-lspconfig handle installation automatically
 
 			require("mason-lspconfig").setup({
 				handlers = {
