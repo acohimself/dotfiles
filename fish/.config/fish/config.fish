@@ -27,6 +27,7 @@ fish_add_path /usr/local/bin
 fish_add_path ~/Library/Python/3.8/bin
 fish_add_path /opt/homebrew/bin
 fish_add_path ~/.npm-global/bin
+fish_add_path ~/.cargo/bin
 
 # Aliases
 alias vi=nvim
