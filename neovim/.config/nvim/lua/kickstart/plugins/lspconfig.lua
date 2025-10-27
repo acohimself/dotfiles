@@ -157,8 +157,6 @@ return {
 			end
 
 			local servers = {
-				-- clangd = {},
-				-- gopls = {},
 				rust_analyzer = {
 					settings = {
 						["rust-analyzer"] = {
@@ -168,19 +166,8 @@ return {
 						},
 					},
 				},
-				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
-				--
-				-- Some languages (like typescript) have entire language plugins that can be useful:
-				--    https://github.com/pmizio/typescript-tools.nvim
-				--
-				-- But for many setups, the LSP (`tsserver`) will work just fine
-				-- tsserver = {},
-				--
-				-- If the custom binary exists, use it
 
 				lua_ls = lua_config,
-
-				-- },
 			}
 
 			-- Add Python tools only if Python is available

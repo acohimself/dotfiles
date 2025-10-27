@@ -21,6 +21,7 @@ return {
 				"markdown",
 				"vim",
 				"vimdoc",
+				"typst",
 			},
 			-- Autoinstall languages that are not installed
 			auto_install = false,

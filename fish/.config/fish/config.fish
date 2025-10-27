@@ -8,6 +8,9 @@ if status is-interactive
     set fish_cursor_replace_one underscore
     set fish_cursor_visual block
 
+    # Bind ctrl-r for history search in vi mode
+    bind -M insert ctrl-r 'commandline -f history-pager'
+    bind -M default ctrl-r 'commandline -f history-pager'
     # Initialize Starship prompt if available
     if type -q starship
         starship init fish | source
@@ -34,6 +37,20 @@ alias vi=nvim
 alias dc="docker compose"
 alias domce="ssh root@ssh.domce.dk"
 alias get-dev-ip='aws ec2 describe-instances --output=text --region=eu-central-1 --filters Name="tag:Name",Values="ECS - dev" --query "Reservations[*].Instances[*].PublicIpAddress"'
+
+function ls
+    if command -q eza
+        eza $argv
+    else
+        command ls $argv
+    end
+end
+
+if command -q zoxide
+    zoxide init fish | source
+else if status is-interactive
+    echo "zoxide not installed on this system"
+end
 
 # Initialize tools
 if type -q direnv
