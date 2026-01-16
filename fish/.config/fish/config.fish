@@ -36,11 +36,12 @@ fish_add_path ~/.cargo/bin
 alias vi=nvim
 alias dc="docker compose"
 alias domce="ssh root@ssh.domce.dk"
-alias get-dev-ip='aws ec2 describe-instances --output=text --region=eu-central-1 --filters Name="tag:Name",Values="ECS - dev" --query "Reservations[*].Instances[*].PublicIpAddress"'
 
 function ls
     if command -q eza
         eza $argv
+    else if command -q exa
+        exa $argv
     else
         command ls $argv
     end
