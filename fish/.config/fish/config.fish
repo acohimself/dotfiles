@@ -35,7 +35,7 @@ fish_add_path ~/.cargo/bin
 # Aliases
 alias vi=nvim
 alias dc="docker compose"
-alias domce="ssh root@ssh.domce.dk"
+alias domce="ssh aco@ssh.domce.dk"
 
 function ls
     if command -q eza
