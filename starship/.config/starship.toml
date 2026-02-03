@@ -32,6 +32,8 @@ disabled = false
 
 [os.symbols]
 Macos = ' '
+Arch = '󰣇 '
+EndeavourOS = '󰣇 '
 
 [username]
 style_user = 'yellow bold'
