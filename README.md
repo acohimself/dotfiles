@@ -3,4 +3,4 @@
 
 ### Requirements
 * stow
-* make
+* just

@@ -21,7 +21,6 @@ end
 
 # Environment variables
 set -gx EDITOR nvim
-set -gx TERM xterm-256color
 set -gx LSCOLORS "exgxfxdacxDaDaxbadacex"
 
 # Path additions
@@ -35,7 +34,6 @@ fish_add_path ~/.cargo/bin
 # Aliases
 alias vi=nvim
 alias dc="docker compose"
-alias domce="ssh aco@ssh.domce.dk"
 
 function ls
     if command -q eza
